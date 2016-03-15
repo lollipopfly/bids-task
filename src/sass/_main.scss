@@ -40,13 +40,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-/**
-* ----------------------------------------------------------------------------------------------------
-* FONTS
-* ----------------------------------------------------------------------------------------------------
-*/
-
-
 
 /**
 * ----------------------------------------------------------------------------------------------------
@@ -67,41 +60,11 @@ $gray: #e3e3e3;
 
 @custom-selector :--hoverous :hover, :active, :focus;
 
-
 /**
 * ----------------------------------------------------------------------------------------------------
 * MAIN STYLES
 * ----------------------------------------------------------------------------------------------------
 */
-
-.clearfix:after {
-	content: "";
-	display: block;
-	height: 0;
-	line-height: 0;
-	clear: both;
-	visibility: hidden;
-	display: inline-block;
-}
-
-// Stcky Footer
-html, body {
-	height: 100%;
-}
-
-.wrap {
-	min-height: 100%;
-	margin-bottom: -142px;
-}
-
-.wrap:after {
-	content: "";
-	display: block;
-}
-
-.footer, .wrap:after {
-	height: 142px;
-}
 
 img {
 	max-width: 100%;
@@ -113,152 +76,8 @@ a {
 	outline: none !important; // for firefox
 
 	&:--hoverous {
-			color: $black;
+		color: $black;
 	}
-}
-
-h2 {
-	color:red;
-}
-
-h3 {
-	color:red;
-}
-
-input[type=text],
-input[type=email],
-input[type=tel],
-textarea {
-	border: #e3e3e3;
-	outline: none;
-	height: 40px;
-	padding-left: 10px;
-}
-
-textarea {
-	height: auto;
-}
-
-
-/**
-* ----------------------------------------------------------------------------------------------------
-* Helpers
-* ----------------------------------------------------------------------------------------------------
-*/
-
-.btn {
-	display: inline-block;
-	padding: 9px 20px;
-	color: $black;
-	border: 1px solid $black;
-	text-transform: uppercase;
-
-	&:--hoverous {
-		text-decoration: none;
-		background: $gray;
-		color: $white;
-		transition: .4s color;
-		transition: .3s background;
-	}
-}
-
-/*------------------------------------*\
-    Boostrap menu
-\*------------------------------------*/
-
-.navbar {
-	border: none;
-}
-
-.navbar-default {
-	background: none;
-}
-
-
-/**
-* ----------------------------------------------------------------------------------------------------
-* @MEDIA
-* ----------------------------------------------------------------------------------------------------
-*/
-
-@media screen and (max-width:320px) {
-	body {
-		width: 320px;
-	}
-}
-
-/**
-* ----------------------------------------------------------------------------------------------------
-* COMPONENTS
-* ----------------------------------------------------------------------------------------------------
-*/
-
-/*------------------------------------*\
-    Modal
-\*------------------------------------*/
-
-.modal-body {
-	overflow: hidden;
-}
-
-.modal__title {
-	font-weight: bold;
-	font-size: 22px;
-	text-align: center;
-}
-
-.modal__close {
-	float: right;
-	font-size: 22px;
-	cursor: pointer;
-}
-
-.modal__label {
-	margin-bottom: 5px;
-
-	span {
-		color: red;
-	}
-}
-
-.modal__important span {
-	color: red;
-}
-
-.modal__error {
-	color: red;
-}
-
-.captcha__desc {
-	text-align: center;
-	margin-bottom: 10px;
-}
-
-.captcha-img-container {
-	float: left;
-	width: 48%;
-}
-
-.captcha__refresh {
-	display: block;
-}
-
-.captcha__input {
-	float: right;
-	width: 38%;
-}
-
-.modal-footer {
-	border: none;
-}
-
-/* Confirm */
-.modal-confirm .modal-body {
-	text-align: center;
-}
-
-.modal-confirm__message {
-	margin-bottom: 10px;
 }
 
 

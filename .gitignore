@@ -7,4 +7,5 @@ config.codekit
 map/
 .DS_Store
 index.html
+dist/
 

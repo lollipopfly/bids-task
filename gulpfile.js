@@ -84,6 +84,7 @@ gulp.task('serve', ['sass'], function() {
 \*------------------------------------*/
 
 gulp.task('watch', function() {
+	gulp.watch('src/slim/**/*.slim', { interval: 500 }, ['slim', 'notify']);
 	gulp.watch('src/sass/**/*.scss', { interval: 500 }, ['sass', 'notify']);
 	gulp.watch('public/js/common.js', { interval: 500 }, ['compress', 'notify']);
 });
@@ -102,7 +103,7 @@ gulp.task('notify', function(a) {
 	Run default gulp tasks
 \*------------------------------------*/
 
-gulp.task('default', ['sass', 'compress', 'watch']);
+gulp.task('default', ['sass', 'slim', 'compress', 'watch']);
 
 
 /**

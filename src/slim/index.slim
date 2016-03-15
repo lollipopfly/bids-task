@@ -1,5 +1,5 @@
 doctype 5
-html
+html(ng-app="app")
   head
     title Task2
 	meta charset="utf-8"
@@ -9,49 +9,56 @@ html
   body
     .container
         .row
-            .col-md-6
-                form.form action="#"
+            .col-md-4
+                form.form action="#" ng-controller="formCtrl"
                     h2.form__title Добавить заявку
                     .form-group
-                        label.control-label for="title" Заголовок
-                        input type="text" class="form-control form__input" id="title"
+                        label for="title" Заголовок
+                        input type="text" ng-model="title" class="form-control form__input" id="title"
 
                     .form-group
                         label for="text" Текст заявки
-                        textarea class="form-control form__textarea" id="text"
+                        textarea ng-model="text" class="form-control form__textarea" id="text"
 
                     .form-group
                         label Проект заявки
-                        select#project.form__select
-                            option.select__option Проект 1
-                            option.select__option Проект 2
-                            option.select__option Проект 3
-                            option.select__option Проект 4
+                        select#project.form__select.form-control ng-model="project"
+                            option.select__option value="project1" Проект 1
+                            option.select__option value="project2" Проект 2
+                            option.select__option value="project3" Проект 3
+                            option.select__option value="project4" Проект 4
 
                     h3 Срочность
                     .radio
                         label
-                            input type="radio" value="low" class="form__radio" name="urgency"
+                            input type="radio" ng-model="urgency" value="low" class="form__radio"
                             | Низкая
                     .radio
                         label
-                            input type="radio" value="medium" class="form__radio" name="urgency"
+                            input type="radio" ng-model="urgency" value="medium" class="form__radio"
                             | Обычная
                     .radio
                         label
-                            input type="radio" value="high" class="form__radio" name="urgency"
+                            input type="radio" ng-model="urgency" value="high" class="form__radio"
                             | Высокая
 
                     .form-group
                         label Дата поступления
-                        input type="date" class="form-control form__date"
+                        input type="date" ng-model="date" class="form-control form__date"
 
                     .form-group
                         input type="submit" class="btn btn-primary" value="Добавить"
 
+            .col-md-8
+                table.table.main-table ng-controller="tableCtrl"
+                    tr
+                        th Заголовок
+                        th Проект
+                        th Текст заявки
+                        th Срочность
+                        th Дата поступления
 
 
-            .col-md-6
 
 
     / SCRIPTS

@@ -19,7 +19,6 @@
     "gulp-slim": "*",
     "postcss-custom-selectors": "*",
     "postcss-size": "*",
-    "postcss-pxtorem": "*",
     "remove": "*"
   },
   "scripts": {

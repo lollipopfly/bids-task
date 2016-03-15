@@ -2,6 +2,7 @@ var gulp         = require('gulp'),
 	postcss      = require('gulp-postcss'),
 	browserSync  = require('browser-sync').create(),
 	sass         = require('gulp-sass'),
+	slim         = require("gulp-slim"),
 	size         = require('postcss-size'),
 	pxtorem      = require('postcss-pxtorem'),
 	autoprefixer = require('autoprefixer'),
@@ -10,6 +11,18 @@ var gulp         = require('gulp'),
 	selectors    = require('postcss-custom-selectors'),
 	plumber      = require('gulp-plumber'),
 	notify       = require("gulp-notify");
+
+/*------------------------------------*\
+    Slim
+\*------------------------------------*/
+
+gulp.task('slim', function(){
+  gulp.src("./src/slim/*.slim")
+    .pipe(slim({
+      pretty: true
+    }))
+    .pipe(gulp.dest(""));
+});
 
 /*------------------------------------*\
 	Sass

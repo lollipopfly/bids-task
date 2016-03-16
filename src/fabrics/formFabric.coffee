@@ -17,7 +17,7 @@ module.exports = () ->
         'date':    $scope.date
 
       # Get bids from localStorage
-      storageBids = JSON.parse( service.getBid() )
+      storageBids = JSON.parse( service.getBids() )
 
       bids = service.pushAndStringify(storageBids, bid)
 
@@ -26,7 +26,7 @@ module.exports = () ->
       console.log 'Sorry LocalStorage not working in this browser!'
 
   # Get data from localStorage
-  service.getBid = () ->
+  service.getBids = () ->
     storageBids = localStorage.getItem(service.storageName)
     return storageBids
 

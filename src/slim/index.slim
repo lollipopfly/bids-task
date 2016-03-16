@@ -52,14 +52,19 @@ html(ng-app="app")
                             | Добавить
 
             .col-md-8
-                table.table.main-table
-                    /ng-controller="tableCtrl"
+                table.table.main-table ng-controller="bidsCtrl"
                     tr
                         th Заголовок
                         th Проект
                         th Текст заявки
                         th Срочность
                         th Дата поступления
+                    tr ng-repeat="bid in bidsList track by $index"
+                        td {{bid.title}}
+                        td {{bid.project}}
+                        td {{bid.text}}
+                        td {{bid.urgency}}
+                        td {{bid.date}}
 
 
 

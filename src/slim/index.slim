@@ -51,21 +51,24 @@ html(ng-app="app")
                         button type="submit" class="btn btn-primary"
                             | Добавить
 
-            .col-md-8
+            .col-md-8 ng-controller="bidsCtrl"
                 h2.form__title Таблица заявок
-                table.table.main-table ng-controller="bidsCtrl"
+                .form-group.form-inline.filter
+                    label.filter__title for="project-filter" Фильтр по проектам
+                    input#project-filter.form-control type='text' ng-model='search.project' ng-change="clear()"
+                table.table.main-table
                     tr
                         th Заголовок
                         th Проект
                         th Текст заявки
-                        th Срочность
+                        th Срочность ячейка
                         th Дата поступления
-                    tr ng-repeat="bid in bidsList track by $index"
-                        td {{bid.title}}
-                        td {{bid.project}}
-                        td {{bid.text}}
-                        td {{bid.urgency}}
-                        td {{bid.date}}
+                    tr ng-repeat="bid in bidsList | filter:search track by $index"
+                        td.table__cell {{bid.title}}
+                        td.table__cell {{bid.project}}
+                        td.table__cell {{bid.text}}
+                        td.table__cell {{bid.urgency}}
+                        td.table__cell {{bid.date}}
 
     / SCRIPTS
     script src="dist/js/global.min.js"

@@ -9,4 +9,12 @@ module.exports = ($scope, formFabric) ->
     $scope.bidsList = formFabric.bidsList
     return
 
+  # Clear filter history
+  $scope.clear = () ->
+    if $scope.search.project.length == 0
+      delete $scope.search.project
+      return
+
+
+
 

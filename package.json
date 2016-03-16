@@ -16,6 +16,7 @@
     "coffeeify": "^2.0.1",
     "gulp-browserify": "^0.5.1",
     "gulp-concat": "*",
+    "gulp-ngmin": "^0.3.0",
     "gulp-notify": "*",
     "gulp-plumber": "*",
     "gulp-rename": "^1.2.2",

@@ -8,6 +8,7 @@ module.exports = ($scope, $filter, formFabric) ->
     # clear all text fields
     $scope.bid = ''
 
+
   # Listener for throw bids to bidsCtrl
   $scope.$on 'addBid', () ->
     $scope.bidsList = formFabric.bidsList

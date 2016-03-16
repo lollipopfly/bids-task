@@ -9,6 +9,7 @@ var gulp         = require('gulp'),
 	autoprefixer = require('autoprefixer'),
 	concat       = require('gulp-concat'),
 	uglify       = require('gulp-uglify'),
+	ngmin        = require('gulp-ngmin'),
 	selectors    = require('postcss-custom-selectors'),
 	plumber      = require('gulp-plumber'),
 	notify       = require("gulp-notify");
@@ -63,7 +64,8 @@ gulp.task('compress', function() {
 			extensions: ['.coffee']
 			}))
 		.pipe(rename('global.min.js'))
-		.pipe(uglify())
+		.pipe(ngmin({dynamic: true}))
+		.pipe(uglify({mangle: false}))
 		.pipe(gulp.dest('dist/js/'));
 });
 

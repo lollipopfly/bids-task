@@ -21,7 +21,7 @@ gulp.task('slim', function(){
   gulp.src("./src/slim/*.slim")
   	.pipe(plumber())
     .pipe(slim({
-      pretty: true,
+      pretty: false,
       options: "attr_list_delims={'(' => ')', '[' => ']'}"
     }))
     .pipe(gulp.dest(""));
@@ -59,13 +59,11 @@ gulp.task('compress', function() {
 					'src/app.coffee'], { read: false })
 		.pipe(plumber())
 		.pipe(browserify({
-			  // insertGlobals : true,
-			  transform: ['coffeeify'],
-      		  extensions: ['.coffee']
-			  // debug : !gulp.env.production
+			transform: ['coffeeify'],
+			extensions: ['.coffee']
 			}))
 		.pipe(rename('global.min.js'))
-		// .pipe(uglify())
+		.pipe(uglify())
 		.pipe(gulp.dest('dist/js/'));
 });
 

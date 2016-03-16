@@ -9,7 +9,7 @@ html(ng-app="app")
   body(ng-cloak)
     .container
         .row
-            .col-md-4
+            .col-md-3
                 form.form action="" ng-controller="formCtrl" ng-submit="saveBid($event, bid)"
                     h2.form__title Добавить заявку
                     .form-group
@@ -51,7 +51,7 @@ html(ng-app="app")
                         button type="submit" class="btn btn-primary"
                             | Добавить
 
-            .col-md-8 ng-controller="bidsCtrl"
+            .col-md-9 ng-controller="bidsCtrl"
                 h2.form__title Таблица заявок
                 .form-group.form-inline.filter
                     label.filter__title for="project-filter" Фильтр по проектам
@@ -59,26 +59,33 @@ html(ng-app="app")
                 table.table.main-table
                     tr
                         th.table__head-title ng-click="order('title')"
-                            | Заголовок
-                            span class="table__rect" ng-show="predicate === 'title'" ng-class="{reverse:reverse}"
+                            div.table__head-text
+                                | Заголовок
+                                span class="table__rect" ng-show="predicate === 'title'" ng-class="{reverse:reverse}"
                         th.table__head-title ng-click="order('project')"
-                            | Проект
-                            span class="table__rect" ng-show="predicate === 'project'" ng-class="{reverse:reverse}"
+                            div.table__head-text
+                                | Проект
+                                span class="table__rect" ng-show="predicate === 'project'" ng-class="{reverse:reverse}"
                         th.table__head-title ng-click="order('text')"
-                            | Текст заявки
-                            span class="table__rect" ng-show="predicate === 'text'" ng-class="{reverse:reverse}"
+                            div.table__head-text
+                                | Текст заявки
+                                span class="table__rect" ng-show="predicate === 'text'" ng-class="{reverse:reverse}"
                         th.table__head-title ng-click="order('urgency')"
-                            | Срочность ячейка
-                            span class="table__rect" ng-show="predicate === 'urgency'" ng-class="{reverse:reverse}"
+                            div.table__head-text
+                                | Срочность ячейка
+                                span class="table__rect" ng-show="predicate === 'urgency'" ng-class="{reverse:reverse}"
                         th.table__head-title ng-click="order('date')"
-                            | Дата поступления
-                            span class="table__rect" ng-show="predicate === 'date'" ng-class="{reverse:reverse}"
-                    tr ng-repeat="bid in bidsList | filter:search track by $index"
+                            div.table__head-text
+                                | Дата поступления
+                                span class="table__rect" ng-show="predicate === 'date'" ng-class="{reverse:reverse}"
+                        th
+                    tr.table__row ng-repeat="bid in bidsList | filter:search track by $index"
                         td.table__cell {{bid.title}}
                         td.table__cell {{bid.project}}
                         td.table__cell {{bid.text}}
                         td.table__cell {{bid.urgency}}
                         td.table__cell {{bid.date}}
+                        td.table__cell.table__cell-del ng-click="delBid()" Удалить
 
     / SCRIPTS
     script src="dist/js/global.min.js"

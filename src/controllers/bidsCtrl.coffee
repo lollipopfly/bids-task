@@ -16,7 +16,7 @@ module.exports = ($scope, $filter, formFabric) ->
       delete $scope.search.project
       return
 
-
+  # Order bids
   $scope.order = (predicate) ->
     $scope.predicate = predicate
     $scope.reverse = if ($scope.predicate == predicate) then !$scope.reverse else false

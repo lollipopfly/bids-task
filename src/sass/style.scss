@@ -19,25 +19,35 @@
 }
 
 .table__head-title {
-	position: relative;
 	cursor: pointer;
+}
+
+.table__head-text {
+	position: relative;
+	display: inline-block;
 }
 
 .table__rect:after {
   content: '\25b2';
   position: absolute;
   top: 50%;
-  left: -8px;
+  right: -15px;
   transform: translate(0, -50%);
   color: $blue;
 }
+
 .table__rect.reverse:after {
   content: '\25bc';
   position: absolute;
   top: 50%;
-  left: -8px;
+  right: -15px;
   transform: translate(0, -50%);
   color: $blue;
+}
+
+.table__cell-del {
+	color: $red;
+	cursor: pointer;
 }
 
 

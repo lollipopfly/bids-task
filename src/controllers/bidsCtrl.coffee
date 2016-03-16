@@ -12,7 +12,9 @@ module.exports = ($scope, $filter, formFabric, bidsFabric) ->
 
   # Delete bid
   $scope.delBid = (id) ->
-    bidsFabric.delBid(id)
+    # get bids from localStorage
+    storageBids = JSON.parse(formFabric.getBids())
+    $scope.bidsList = bidsFabric.delBid(id, storageBids)
     return
 
   # Clear filter history

@@ -3,6 +3,7 @@
 module.exports = ($rootScope) ->
   service = {}
   service.storageName = 'bids'
+
   # Share data between controllers
   service.bidsList = []
 
@@ -49,6 +50,7 @@ module.exports = ($rootScope) ->
 
     return storageBids
 
+  # Generate unique id for bid
   service.getUniqueId = () ->
     uniqueId = Math.random().toString(36).substr(2, 9)
     return uniqueId

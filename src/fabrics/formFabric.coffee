@@ -1,5 +1,4 @@
 'use strict'
-_ = require('lodash/util')
 
 module.exports = ($rootScope) ->
   service = {}
@@ -20,7 +19,7 @@ module.exports = ($rootScope) ->
   service.saveBid = ($scope, $filter) ->
     if typeof(Storage) != "undefined"
       bid =
-        "id":      _.uniqueId()
+        "id":      service.getUniqueId()
         'title':   $scope.bid.title
         'text':    $scope.bid.text
         'project': $scope.bid.project
@@ -49,6 +48,10 @@ module.exports = ($rootScope) ->
     storageBids = JSON.stringify(storageBids)
 
     return storageBids
+
+  service.getUniqueId = () ->
+    uniqueId = Math.random().toString(36).substr(2, 9)
+    return uniqueId
 
   return service
 

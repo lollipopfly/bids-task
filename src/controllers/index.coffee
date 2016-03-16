@@ -3,4 +3,4 @@
 app = require('angular').module('app')
 
 app.controller('formCtrl',['$scope', '$filter', 'formFabric', require('./formCtrl')])
-app.controller('bidsCtrl',['$scope', '$filter', 'formFabric', require('./bidsCtrl')])
+app.controller('bidsCtrl',['$scope', '$filter', 'formFabric', 'bidsFabric', require('./bidsCtrl')])

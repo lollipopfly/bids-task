@@ -1,6 +1,6 @@
 'use strict'
 
-module.exports = ($scope, $filter, formFabric) ->
+module.exports = ($scope, $filter, formFabric, bidsFabric) ->
   # Get data from localStorage
   $scope.bidsList = JSON.parse(formFabric.getBids())
   orderBy = $filter('orderBy')
@@ -10,19 +10,25 @@ module.exports = ($scope, $filter, formFabric) ->
     $scope.bidsList = formFabric.bidsList
     return
 
+  # Delete bid
+  $scope.delBid = (id) ->
+    bidsFabric.delBid(id)
+    return
+
   # Clear filter history
   $scope.clear = () ->
     if $scope.search.project.length == 0
       delete $scope.search.project
       return
 
-  # Order bids
+  # Sort bids
   $scope.order = (predicate) ->
     $scope.predicate = predicate
     $scope.reverse = if ($scope.predicate == predicate) then !$scope.reverse else false
     $scope.bidsList = orderBy($scope.bidsList, predicate, $scope.reverse)
     return
 
+  # Default sort
   $scope.order('title', true)
 
 

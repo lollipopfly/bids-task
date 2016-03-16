@@ -21,7 +21,6 @@
     "gulp-rename": "^1.2.2",
     "gulp-slim": "*",
     "gulp-uglify": "*",
-    "lodash": "^4.6.1",
     "postcss-custom-selectors": "*",
     "postcss-size": "*",
     "remove": "*"

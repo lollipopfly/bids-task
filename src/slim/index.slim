@@ -10,19 +10,19 @@ html(ng-app="app")
     .container
         .row
             .col-md-4
-                form.form action="" ng-controller="formCtrl" ng-submit="saveBid($event)"
+                form.form action="" ng-controller="formCtrl" ng-submit="saveBid($event, bid)"
                     h2.form__title Добавить заявку
                     .form-group
                         label for="title" Заголовок
-                        input type="text" ng-model="title" class="form-control form__input" required="required"
+                        input type="text" ng-model="bid.title" class="form-control form__input" required="required"
 
                     .form-group
                         label for="text" Текст заявки
-                        textarea ng-model="text" class="form-control form__textarea"
+                        textarea ng-model="bid.text" class="form-control form__textarea"
 
                     .form-group
                         label Проект заявки
-                        select#project.form__select.form-control ng-model="project"
+                        select#project.form__select.form-control ng-model="bid.project"
                             option.select__option value="" Выбрать проект
                             option.select__option value="project1" Проект 1
                             option.select__option value="project2" Проект 2
@@ -32,20 +32,20 @@ html(ng-app="app")
                     h3 Срочность
                     .radio
                         label
-                            input type="radio" ng-model="urgency" value="low" class="form__radio"
+                            input type="radio" ng-model="bid.urgency" value="low" class="form__radio"
                             | Низкая
                     .radio
                         label
-                            input type="radio" ng-model="urgency" value="medium" class="form__radio"
+                            input type="radio" ng-model="bid.urgency" value="medium" class="form__radio"
                             | Обычная
                     .radio
                         label
-                            input type="radio" ng-model="urgency" value="high" class="form__radio"
+                            input type="radio" ng-model="bid.urgency" value="high" class="form__radio"
                             | Высокая
 
                     .form-group
                         label Дата поступления
-                        input type="date" ng-model="date" class="form-control form__date"
+                        input type="date" ng-model="bid.date" class="form-control form__date"
 
                     .form-group
                         button type="submit" class="btn btn-primary"

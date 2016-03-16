@@ -1,26 +1,38 @@
 'use strict'
 _ = require('lodash/util')
 
-module.exports = () ->
+module.exports = ($rootScope) ->
   service = {}
   service.storageName = 'bids'
+  # Share data between controllers
+  service.bidsList = []
+
+  service.prepForBroadcast = (obj) ->
+    this.bidsList = obj
+    this.broadcastItem()
+    return
+
+  service.broadcastItem = () ->
+    $rootScope.$broadcast('addBid')
+    return
 
   # Save data in localStorage
   service.saveBid = ($scope, $filter) ->
     if typeof(Storage) != "undefined"
       bid =
         "id":      _.uniqueId()
-        'title':   $scope.title
-        'text':    $scope.text
-        'project': $scope.project
-        'urgency': $scope.urgency
-        'date':    $filter('date')($scope.date, "dd-MM-yyyy")
+        'title':   $scope.bid.title
+        'text':    $scope.bid.text
+        'project': $scope.bid.project
+        'urgency': $scope.bid.urgency
+        'date':    $filter('date')($scope.bid.date, "dd-MM-yyyy")
 
       # Get bids from localStorage
       storageBids = JSON.parse( service.getBids() )
 
       bids = service.pushAndStringify(storageBids, bid)
-
+      # add bid to BidsCtrl
+      service.prepForBroadcast(JSON.parse(bids))
       localStorage.setItem(service.storageName, bids)
     else
       console.log 'Sorry LocalStorage not working in this browser!'

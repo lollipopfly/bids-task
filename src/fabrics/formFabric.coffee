@@ -6,7 +6,7 @@ module.exports = () ->
   service.storageName = 'bids'
 
   # Save data in localStorage
-  service.saveBid = ($scope) ->
+  service.saveBid = ($scope, $filter) ->
     if typeof(Storage) != "undefined"
       bid =
         "id":      _.uniqueId()
@@ -14,7 +14,7 @@ module.exports = () ->
         'text':    $scope.text
         'project': $scope.project
         'urgency': $scope.urgency
-        'date':    $scope.date
+        'date':    $filter('date')($scope.date, "dd-MM-yyyy")
 
       # Get bids from localStorage
       storageBids = JSON.parse( service.getBids() )

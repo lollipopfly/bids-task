@@ -19,6 +19,7 @@ var gulp         = require('gulp'),
 
 gulp.task('slim', function(){
   gulp.src("./src/slim/*.slim")
+  	.pipe(plumber())
     .pipe(slim({
       pretty: true,
       options: "attr_list_delims={'(' => ')', '[' => ']'}"

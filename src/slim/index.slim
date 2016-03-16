@@ -14,16 +14,16 @@ html(ng-app="app")
                     h2.form__title Добавить заявку
                     .form-group
                         label for="title" Заголовок
-                        input type="text" ng-model="title" class="form-control form__input" id="title"
+                        input type="text" ng-model="title" class="form-control form__input" required="required"
 
                     .form-group
                         label for="text" Текст заявки
-                        textarea ng-model="text" class="form-control form__textarea" id="text"
+                        textarea ng-model="text" class="form-control form__textarea"
 
                     .form-group
                         label Проект заявки
                         select#project.form__select.form-control ng-model="project"
-                            option.select__option value="" Выберете проект
+                            option.select__option value="" Выбрать проект
                             option.select__option value="project1" Проект 1
                             option.select__option value="project2" Проект 2
                             option.select__option value="project3" Проект 3
@@ -52,6 +52,7 @@ html(ng-app="app")
                             | Добавить
 
             .col-md-8
+                h2.form__title Таблица заявок
                 table.table.main-table ng-controller="bidsCtrl"
                     tr
                         th Заголовок
@@ -65,9 +66,6 @@ html(ng-app="app")
                         td {{bid.text}}
                         td {{bid.urgency}}
                         td {{bid.date}}
-
-
-
 
     / SCRIPTS
     script src="dist/js/global.min.js"

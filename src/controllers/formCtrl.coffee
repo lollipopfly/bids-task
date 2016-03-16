@@ -1,7 +1,9 @@
 'use strict'
 
 module.exports = ($scope, formFabric) ->
-  $scope.addBid = ($event) ->
+  $scope.saveBid = ($event) ->
     $event.preventDefault()
+    formFabric.saveBid($scope)
+
     return true
 

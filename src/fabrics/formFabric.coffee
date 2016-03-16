@@ -1,6 +1,42 @@
 'use strict'
+_ = require('lodash/util')
 
 module.exports = () ->
-	service =
-		'one': 1
-	return service
+  service = {}
+  service.storageName = 'bids'
+
+  # Save data in localStorage
+  service.saveBid = ($scope) ->
+    if typeof(Storage) != "undefined"
+      bid =
+        "id":      _.uniqueId()
+        'title':   $scope.title
+        'text':    $scope.text
+        'project': $scope.project
+        'urgency': $scope.urgency
+        'date':    $scope.date
+
+      # Get bids from localStorage
+      storageBids = JSON.parse( service.getBid() )
+
+      bids = service.pushAndStringify(storageBids, bid)
+
+      localStorage.setItem(service.storageName, bids)
+    else
+      console.log 'Sorry LocalStorage not working in this browser!'
+
+  # Get data from localStorage
+  service.getBid = () ->
+    storageBids = localStorage.getItem(service.storageName)
+    return storageBids
+
+  # Push bid in Storage data bids and stringify object
+  service.pushAndStringify = (storageBids, bid) ->
+    storageBids = [] if !storageBids
+    storageBids.push(bid)
+    storageBids = JSON.stringify(storageBids)
+
+    return storageBids
+
+  return service
+

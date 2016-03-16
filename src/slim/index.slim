@@ -10,12 +10,12 @@ html(ng-app="app")
     .container
         .row
             .col-md-4
-                form.form action="" ng-controller="formCtrl" ng-submit="addBid($event)"
+                form.form action="" ng-controller="formCtrl" ng-submit="saveBid($event)"
                     h2.form__title Добавить заявку
                     .form-group
                         label for="title" Заголовок
                         input type="text" ng-model="title" class="form-control form__input" id="title"
-                        p {{title}}
+
                     .form-group
                         label for="text" Текст заявки
                         textarea ng-model="text" class="form-control form__textarea" id="text"

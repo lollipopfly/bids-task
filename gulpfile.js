@@ -64,7 +64,7 @@ gulp.task('compress', function() {
 			  // debug : !gulp.env.production
 			}))
 		.pipe(rename('global.min.js'))
-		.pipe(uglify())
+		// .pipe(uglify())
 		.pipe(gulp.dest('dist/js/'));
 });
 

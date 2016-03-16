@@ -58,11 +58,21 @@ html(ng-app="app")
                     input#project-filter.form-control type='text' ng-model='search.project' ng-change="clear()"
                 table.table.main-table
                     tr
-                        th Заголовок
-                        th Проект
-                        th Текст заявки
-                        th Срочность ячейка
-                        th Дата поступления
+                        th.table__head-title ng-click="order('title')"
+                            | Заголовок
+                            span class="table__rect" ng-show="predicate === 'title'" ng-class="{reverse:reverse}"
+                        th.table__head-title ng-click="order('project')"
+                            | Проект
+                            span class="table__rect" ng-show="predicate === 'project'" ng-class="{reverse:reverse}"
+                        th.table__head-title ng-click="order('text')"
+                            | Текст заявки
+                            span class="table__rect" ng-show="predicate === 'text'" ng-class="{reverse:reverse}"
+                        th.table__head-title ng-click="order('urgency')"
+                            | Срочность ячейка
+                            span class="table__rect" ng-show="predicate === 'urgency'" ng-class="{reverse:reverse}"
+                        th.table__head-title ng-click="order('date')"
+                            | Дата поступления
+                            span class="table__rect" ng-show="predicate === 'date'" ng-class="{reverse:reverse}"
                     tr ng-repeat="bid in bidsList | filter:search track by $index"
                         td.table__cell {{bid.title}}
                         td.table__cell {{bid.project}}

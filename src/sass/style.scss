@@ -9,12 +9,35 @@
 /*------------------------------------*\
     Table
 \*------------------------------------*/
+
 .filter__title {
 	margin-right: 20px;
 }
 
 .main-table {
 	margin-top: 20px;
+}
+
+.table__head-title {
+	position: relative;
+	cursor: pointer;
+}
+
+.table__rect:after {
+  content: '\25b2';
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  transform: translate(0, -50%);
+  color: $blue;
+}
+.table__rect.reverse:after {
+  content: '\25bc';
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  transform: translate(0, -50%);
+  color: $blue;
 }
 
 

@@ -11,12 +11,16 @@
     "gulp-sass": "*"
   },
   "devDependencies": {
+    "angular": "^1.5.0",
     "browser-sync": "*",
+    "coffeeify": "^2.0.1",
+    "gulp-browserify": "^0.5.1",
     "gulp-concat": "*",
     "gulp-notify": "*",
     "gulp-plumber": "*",
-    "gulp-uglify": "*",
+    "gulp-rename": "^1.2.2",
     "gulp-slim": "*",
+    "gulp-uglify": "*",
     "postcss-custom-selectors": "*",
     "postcss-size": "*",
     "remove": "*"

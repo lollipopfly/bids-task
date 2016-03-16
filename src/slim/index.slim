@@ -10,12 +10,12 @@ html(ng-app="app")
     .container
         .row
             .col-md-4
-                form.form action="#" ng-controller="formCtrl"
+                form.form action="" ng-controller="formCtrl" ng-submit="addBid($event)"
                     h2.form__title Добавить заявку
                     .form-group
                         label for="title" Заголовок
                         input type="text" ng-model="title" class="form-control form__input" id="title"
-
+                        p {{title}}
                     .form-group
                         label for="text" Текст заявки
                         textarea ng-model="text" class="form-control form__textarea" id="text"
@@ -47,10 +47,12 @@ html(ng-app="app")
                         input type="date" ng-model="date" class="form-control form__date"
 
                     .form-group
-                        input type="submit" class="btn btn-primary" value="Добавить"
+                        button type="submit" class="btn btn-primary"
+                            | Добавить
 
             .col-md-8
-                table.table.main-table ng-controller="tableCtrl"
+                table.table.main-table
+                    /ng-controller="tableCtrl"
                     tr
                         th Заголовок
                         th Проект

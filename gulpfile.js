@@ -1,6 +1,8 @@
 var gulp         = require('gulp'),
 	postcss      = require('gulp-postcss'),
 	browserSync  = require('browser-sync').create(),
+	browserify   = require('gulp-browserify'),
+	rename       = require('gulp-rename'),
 	sass         = require('gulp-sass'),
 	slim         = require("gulp-slim"),
 	size         = require('postcss-size'),
@@ -18,7 +20,8 @@ var gulp         = require('gulp'),
 gulp.task('slim', function(){
   gulp.src("./src/slim/*.slim")
     .pipe(slim({
-      pretty: true
+      pretty: true,
+      options: "attr_list_delims={'(' => ')', '[' => ']'}"
     }))
     .pipe(gulp.dest(""));
 });
@@ -52,11 +55,15 @@ gulp.task('sass', function() {
 
 gulp.task('compress', function() {
 	return gulp.src([
-					'public/js/jquery.js',
-					'public/js/bootstrap.min.js',
-					'public/js/common.js'])
+					'src/app.coffee'], { read: false })
 		.pipe(plumber())
-		.pipe(concat('global.min.js'))
+		.pipe(browserify({
+			  // insertGlobals : true,
+			  transform: ['coffeeify'],
+      		  extensions: ['.coffee']
+			  // debug : !gulp.env.production
+			}))
+		.pipe(rename('global.min.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest('dist/js/'));
 });
@@ -68,10 +75,13 @@ gulp.task('compress', function() {
 
 gulp.task('serve', ['sass'], function() {
 	browserSync.init({
-	server: ""
+	server: "",
+	port: 3000,
 	});
 
-	gulp.watch("public/css/style.css").on('change', browserSync.reload);
+
+	gulp.watch("dist/js/global.min.js").on('change', browserSync.reload);
+	gulp.watch("dist/css/style.css").on('change', browserSync.reload);
 	gulp.watch("index.html").on('change', browserSync.reload);
 });
 
@@ -82,7 +92,7 @@ gulp.task('serve', ['sass'], function() {
 gulp.task('watch', function() {
 	gulp.watch('src/slim/**/*.slim', { interval: 500 }, ['slim', 'notify']);
 	gulp.watch('src/sass/**/*.scss', { interval: 500 }, ['sass', 'notify']);
-	gulp.watch('public/js/common.js', { interval: 500 }, ['compress', 'notify']);
+	gulp.watch('src/**/*.coffee', { interval: 500 }, ['compress', 'notify']);
 });
 
 /*------------------------------------*\
